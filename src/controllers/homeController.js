@@ -16,7 +16,7 @@ exports.index = async (req, res) => {
             : {};
 
     const tagsPromise = Post.getTagsList();
-    const postsPromise = Post.findPosts(postFilter);
+    const postsPromise = Post.find(postFilter).populate();
 
     const result = await Promise.all([tagsPromise, postsPromise]);
 
